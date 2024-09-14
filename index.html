@@ -74,21 +74,19 @@
 
 <script>
     document.getElementById('card-stack').addEventListener('click', function() {
-        fetchCardText();
+        flipCard();
     });
 
-    function fetchCardText() {
-        fetch('card_text.json') // Pega os dados do arquivo JSON gerado pelo script Python
-            .then(response => response.json())
-            .then(data => {
-                const cardText = data.text;
-                const cardStack = document.getElementById('card-stack');
-                cardStack.classList.add('flipped');
-                document.querySelector('.card-text').textContent = cardText;
-            })
-            .catch(error => {
-                console.error('Error fetching card text:', error);
-            });
+    function flipCard() {
+        // Texto da variável TEXTO gerada dinamicamente no JavaScript
+        const TEXTO = "Você virou a carta!";
+        
+        // Adiciona a classe flipped para mudar o estilo
+        const cardStack = document.getElementById('card-stack');
+        cardStack.classList.add('flipped');
+
+        // Atualiza o texto da carta
+        document.querySelector('.card-text').textContent = TEXTO;
     }
 </script>
 
