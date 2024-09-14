@@ -29,6 +29,9 @@
             background-color: white;
             border: 1px solid black;
             transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .card img {
             width: 100%;
@@ -40,21 +43,18 @@
         .card:nth-child(4) { top: 15px; left: 15px; }
         .card:nth-child(5) { top: 20px; left: 20px; }
         .card:nth-child(6) { top: 25px; left: 25px; }
-        .flipped .card:first-child {
-            transform: translate(0, 25px);
-        }
         .flipped .card img {
             display: none;
-        }
-        .flipped .card-text {
-            display: block;
         }
         .card-text {
             display: none;
             text-align: center;
             font-size: 20px;
             color: black;
-            line-height: 300px;
+            line-height: normal;
+        }
+        .flipped .card-text {
+            display: block;
         }
     </style>
 </head>
@@ -94,9 +94,9 @@ function sortearCard() {
 
 // Função para imprimir um card na interface
 function imprimirCard(texto) {
-    const cardStack = document.getElementById('card-stack');
-    cardStack.classList.add('flipped');
-    document.querySelector('.card-text').textContent = `Dica do dia: ${texto}`;
+    const card = document.querySelector('.card');
+    card.classList.add('flipped');
+    card.querySelector('.card-text').textContent = `Dica do dia: ${texto}`;
 }
 
 // Evento de clique para virar a carta e exibir o texto sorteado
