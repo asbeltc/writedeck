@@ -92,10 +92,22 @@ function imprimirCard(texto) {
     card.querySelector('.card-text').textContent = `Dica do dia: ${texto}`; // Insere o texto sorteado
 }
 
-// Evento de clique para virar a carta e exibir o texto sorteado
+// Função para desvirar o card
+function desvirarCard() {
+    const card = document.querySelector('.card'); // Seleciona a única carta
+    card.classList.remove('flipped'); // Remove a classe para desvirar a carta
+    card.querySelector('.card-text').textContent = ''; // Limpa o texto
+}
+
+// Evento de clique para alternar entre virar e desvirar a carta
 document.getElementById('card-container').addEventListener('click', function() {
-    const cardSorteado = sortearCard();
-    imprimirCard(cardSorteado);
+    const card = document.querySelector('.card'); // Seleciona a única carta
+    if (card.classList.contains('flipped')) {
+        desvirarCard(); // Se a carta já está virada, desvira ela
+    } else {
+        const cardSorteado = sortearCard();
+        imprimirCard(cardSorteado); // Se a carta não está virada, vira e exibe o texto
+    }
 });
 </script>
 
