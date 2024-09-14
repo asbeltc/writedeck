@@ -38,9 +38,6 @@
             height: 100%;
             border-radius: 15px;
         }
-        .flipped img {
-            display: none;
-        }
         .card-text {
             display: none;
             text-align: center;
@@ -51,18 +48,53 @@
             padding: 10px; /* Margem interna de 10 pixels */
             box-sizing: border-box; /* Inclui o padding no cálculo do tamanho total */
         }
+        .flipped img {
+            display: none;
+        }
         .flipped .card-text {
             display: block;
+        }
+        /* Estilo das cartas adicionais */
+        .card:nth-child(n+2) {
+            top: 10px;
+            left: 10px;
+        }
+        .card:nth-child(2) {
+            top: 10px;
+            left: 10px;
+        }
+        .card:nth-child(3) {
+            top: 20px;
+            left: 20px;
+        }
+        .card:nth-child(4) {
+            top: 30px;
+            left: 30px;
+        }
+        .card:nth-child(5) {
+            top: 40px;
+            left: 40px;
+        }
+        .card:nth-child(6) {
+            top: 50px;
+            left: 50px;
         }
     </style>
 </head>
 <body>
 
 <div class="card-container" id="card-container">
+    <!-- Carta principal (de cima) -->
     <div class="card">
         <img src="back_of_card.jpg" alt="Card Back">
         <div class="card-text"></div>
     </div>
+    <!-- Cartas adicionais -->
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
 </div>
 
 <script>
@@ -87,21 +119,21 @@ function sortearCard() {
 
 // Função para imprimir o card
 function imprimirCard(texto) {
-    const card = document.querySelector('.card'); // Seleciona a única carta
+    const card = document.querySelector('.card'); // Seleciona a única carta principal
     card.classList.add('flipped'); // Adiciona a classe para virar a carta
     card.querySelector('.card-text').textContent = `Dica do dia: ${texto}`; // Insere o texto sorteado
 }
 
 // Função para desvirar o card
 function desvirarCard() {
-    const card = document.querySelector('.card'); // Seleciona a única carta
+    const card = document.querySelector('.card'); // Seleciona a única carta principal
     card.classList.remove('flipped'); // Remove a classe para desvirar a carta
     card.querySelector('.card-text').textContent = ''; // Limpa o texto
 }
 
 // Evento de clique para alternar entre virar e desvirar a carta
 document.getElementById('card-container').addEventListener('click', function() {
-    const card = document.querySelector('.card'); // Seleciona a única carta
+    const card = document.querySelector('.card'); // Seleciona a única carta principal
     if (card.classList.contains('flipped')) {
         desvirarCard(); // Se a carta já está virada, desvira ela
     } else {
