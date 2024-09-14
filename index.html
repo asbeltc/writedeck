@@ -70,10 +70,7 @@
     <div class="card"></div>
     <div class="card"></div>
     <div class="card"></div>
-    <div class="card">
-        <img src="back_of_card.jpg" alt="Card Back">
-        <div class="card-text"></div>
-    </div>
+    <div class="card"></div>
 </div>
 
 <script>
@@ -96,14 +93,14 @@ function sortearCard() {
     return textos[numeroSorteado];
 }
 
-// Função para imprimir o card na sexta carta
+// Função para imprimir o card
 function imprimirCard(texto) {
-    const card = document.querySelector('.card:nth-child(6)'); // Seleciona a sexta carta
+    const card = document.querySelector('.card:nth-child(1)'); // Seleciona a primeira carta
     card.classList.add('flipped'); // Adiciona a classe para virar a carta
     card.querySelector('.card-text').textContent = `Dica do dia: ${texto}`; // Insere o texto sorteado
 }
 
-// Evento de clique para virar a sexta carta e exibir o texto sorteado
+// Evento de clique para virar a primeira carta e exibir o texto sorteado
 document.getElementById('card-stack').addEventListener('click', function() {
     const cardSorteado = sortearCard();
     imprimirCard(cardSorteado);
