@@ -73,21 +73,37 @@
 </div>
 
 <script>
-    document.getElementById('card-stack').addEventListener('click', function() {
-        flipCard();
-    });
+// Lista de textos
+const textos = [
+    "Texto do card 1",
+    "Texto do card 2",
+    "Texto do card 3",
+    "Texto do card 5",
+    "Texto do card 6",
+    "Texto do card 7",
+    "Texto do card 8",
+    "Texto do card 9",
+    "Texto do card 10"
+];
 
-    function flipCard() {
-        // Texto da variável TEXTO gerada dinamicamente no JavaScript
-        const TEXTO = "Você virou a carta!";
-        
-        // Adiciona a classe flipped para mudar o estilo
-        const cardStack = document.getElementById('card-stack');
-        cardStack.classList.add('flipped');
+// Função para sortear um card
+function sortearCard() {
+    const numeroSorteado = Math.floor(Math.random() * textos.length);
+    return textos[numeroSorteado];
+}
 
-        // Atualiza o texto da carta
-        document.querySelector('.card-text').textContent = TEXTO;
-    }
+// Função para imprimir um card na interface
+function imprimirCard(texto) {
+    const cardStack = document.getElementById('card-stack');
+    cardStack.classList.add('flipped');
+    document.querySelector('.card-text').textContent = `Dica do dia: ${texto}`;
+}
+
+// Evento de clique para virar a carta e exibir o texto sorteado
+document.getElementById('card-stack').addEventListener('click', function() {
+    const cardSorteado = sortearCard();
+    imprimirCard(cardSorteado);
+});
 </script>
 
 </body>
